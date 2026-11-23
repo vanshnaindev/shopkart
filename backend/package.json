@@ -1,0 +1,47 @@
+{
+  "name": "shopkart-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "NODE_ENV=production tsx src/index.ts",
+    "seed": "tsx src/seed.ts",
+    "migrate:json-to-mongo": "tsx scripts/migrate-json-to-mongo.ts",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:all-modes": "node scripts/smoke-all-modes.mjs",
+    "lint": "eslint src/ && tsc --noEmit"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.7.5",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.12.1",
+    "nodemailer": "^10.6.1",
+    "tsx": "^4.21.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.14.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "^5.1.1",
+    "eslint": "^10.15.0",
+    "mongodb-memory-server": "^11.4.0",
+    "prettier": "^3.10.1",
+    "supertest": "^7.3.2",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.73.0",
+    "vitest": "^5.1.1"
+  }
+}
