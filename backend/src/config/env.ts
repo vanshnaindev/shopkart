@@ -51,6 +51,9 @@ export const env = {
   MONGODB_URI: process.env.MONGODB_URI || '',
   RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID || '',
   RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET || '',
+  RESEND_API_KEY: process.env.RESEND_API_KEY || '',
+  EMAIL_FROM:
+    process.env.EMAIL_FROM || process.env.SMTP_FROM || 'ShopKart <onboarding@resend.dev>',
   SMTP_HOST: process.env.SMTP_HOST || '',
   SMTP_PORT: process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 587,
   SMTP_USER: process.env.SMTP_USER || '',
