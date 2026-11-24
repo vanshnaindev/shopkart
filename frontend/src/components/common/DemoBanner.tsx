@@ -1,39 +1,14 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext.tsx';
-import { useToast } from '../../context/ToastContext.tsx';
-import { api } from '../../services/api.ts';
-import { ShieldCheck, UserCheck, RotateCcw, X, Sparkles } from 'lucide-react';
+import { ShieldCheck, UserCheck, X, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const DemoBanner: React.FC = () => {
   const { user, quickDemoLogin, logout } = useAuth();
-  const { showToast } = useToast();
   const navigate = useNavigate();
   const [closed, setClosed] = useState(false);
-  const [resetting, setResetting] = useState(false);
 
   if (closed) return null;
-
-  const handleReset = async () => {
-    if (
-      !window.confirm(
-        'Reset database to pristine seed data (30+ products, sample orders, reviews)?'
-      )
-    )
-      return;
-    try {
-      setResetting(true);
-      const { data } = await api.post('/seed/reset');
-      showToast(data.message || 'Database reset successfully!', 'success');
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
-    } catch (err: any) {
-      showToast('Reset failed', 'error');
-    } finally {
-      setResetting(false);
-    }
-  };
 
   return (
     <div className="bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800">
@@ -89,16 +64,6 @@ export const DemoBanner: React.FC = () => {
               Switch / Logout
             </button>
           )}
-
-          <button
-            onClick={handleReset}
-            disabled={resetting}
-            title="Reset database to pristine seed catalog"
-            className="inline-flex items-center gap-1 bg-rose-900/60 hover:bg-rose-800 text-rose-200 border border-rose-700/50 px-2.5 py-1 rounded font-medium transition cursor-pointer ml-1"
-          >
-            <RotateCcw className={`w-3 h-3 ${resetting ? 'animate-spin' : ''}`} />
-            {resetting ? 'Resetting...' : 'Reset Demo DB'}
-          </button>
 
           <button
             onClick={() => setClosed(true)}

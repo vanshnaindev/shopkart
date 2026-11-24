@@ -38,7 +38,6 @@ With no `MONGODB_URI`, the API automatically uses a high-performance embedded JS
 | `npm run dev`                                  | API + web together                                                                                                                                   |
 | `npm run dev:backend` / `npm run dev:frontend` | one side only                                                                                                                                        |
 | `npm run build`                                | production build of the frontend (`frontend/dist`)                                                                                                   |
-| `npm run seed`                                 | reset the data store to pristine seed data (works on JSON and MongoDB)                                                                               |
 | `npm run lint`                                 | Lint checks across both apps (`eslint src/` and `tsc --noEmit`)                                                                                      |
 | `npm run format`                               | Format all files across the repository using Prettier                                                                                                |
 | `npm run format:check`                         | Verify formatting compliance across all files using Prettier                                                                                         |
@@ -91,9 +90,6 @@ docker compose -f docker-compose.mongo.yml ps
 # Set MONGODB_URI in backend/.env or your terminal:
 MONGODB_URI="mongodb://localhost:27017/shopkart?replicaSet=rs0&directConnection=true"
 
-# Seed the database
-npm run seed
-
 # Run dev server with MongoDB
 npm run dev
 
@@ -125,9 +121,8 @@ MongoDB Atlas provides fully managed multi-node replica sets with transaction su
    ```env
    MONGODB_URI=mongodb+srv://shopkart_admin:YourSecurePassword@cluster0.abcde.mongodb.net/shopkart?retryWrites=true&w=majority
    ```
-6. **Seed & Run:**
+6. **Run:**
    ```bash
-   npm run seed
    npm run dev
    ```
 
